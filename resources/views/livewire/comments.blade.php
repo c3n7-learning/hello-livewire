@@ -8,17 +8,16 @@
           <button class="p-2 bg-blue-500 w-20 rounded shadow text-white">Add</button>
         </div>
       </div>
-
-      <div class="rounded border shadow p-3 my-2">
-        <div class="flex justify-start my-2">
-          <p class="font-bold text-lg">John</p>
-          <p class="mx-3 py-1 text-xs text-gray-500 font-semibold">3 min ago</p>
+      @foreach ($comments as $comment)
+        <div class="rounded border shadow p-3 my-2">
+          <div class="flex justify-start my-2">
+            <p class="font-bold text-lg">{{ $comment['creator'] }}</p>
+            <p class="mx-3 py-1 text-xs text-gray-500 font-semibold">{{ $comment['created_at'] }}</p>
+          </div>
+          <p class="text-gray-800">
+            {{ $comment['body'] }} </p>
         </div>
-        <p class="text-gray-800">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, dicta nihil ducimus quos assumenda alias
-          impedit veritatis similique, dolor, aut maiores id earum aspernatur ipsum eum. Ipsa debitis aliquam aperiam?
-        </p>
-      </div>
+      @endforeach
     </div>
   </div>
 </div>
