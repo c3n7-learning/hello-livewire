@@ -25,17 +25,20 @@ class Comments extends Component
     $this->comments = Comment::with('creator')->orderBy('created_at', 'desc')->get();
   }
 
+  protected $rules =
+    [
+      'newComment' => 'required|max:255',
+    ];
+
 
   public function updated($newComment)
   {
-    $this->validateOnly($newComment, [
-      'newComment' => 'required|max:255',
-    ]);
+    $this->validateOnly($newComment);
   }
 
   public function addComment()
   {
-    $this->validate(['newComment' => "required|max:255"]);
+    $this->validate();
 
 
     $newComment = Comment::create(['body' => $this->newComment, 'user_id' => 1]);
