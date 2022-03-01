@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Comments extends Component
 {
-  public $comments = [];
+  public $comments;
 
   public $newComment;
 
@@ -21,18 +21,18 @@ class Comments extends Component
   public function mount()
   {
     // $this->comments = Comment::all();
-    $this->comments = Comment::with('creator')->get();
+    $this->comments = Comment::with('creator')->orderBy('created_at', 'desc')->get();
   }
 
 
   public function addComment()
   {
+
+
     if ($this->newComment == "") return;
-    array_unshift($this->comments, [
-      'body' => $this->newComment,
-      'created_at' => Carbon::now()->diffForHumans(),
-      'creator' => "Jane"
-    ]);
+
+    $newComment = Comment::create(['body' => $this->newComment, 'user_id' => 1]);
+    $this->comments->prepend($newComment);
 
     $this->newComment = "";
   }
