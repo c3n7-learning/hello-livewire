@@ -39,8 +39,7 @@ class Comments extends Component
     $this->validate();
 
 
-    $newComment = Comment::create(['body' => $this->newComment, 'user_id' => 1]);
-    $this->comments->prepend($newComment);
+    Comment::create(['body' => $this->newComment, 'user_id' => 1]);
 
     $this->newComment = "";
 
@@ -53,7 +52,6 @@ class Comments extends Component
 
     $comment->delete();
 
-    $this->comments = $this->comments->except($commentId);
     session()->flash('message', 'Comment deleted successfully');
   }
 }
