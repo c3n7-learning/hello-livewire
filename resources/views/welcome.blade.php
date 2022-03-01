@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <livewire:comments :initialComments="$comments" />
+  <livewire:comments />
 
   <livewire:scripts />
 </body>
