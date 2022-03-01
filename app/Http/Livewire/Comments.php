@@ -9,6 +9,7 @@ use Livewire\Component;
 class Comments extends Component
 {
   public $comments;
+  public $validate;
 
   public $newComment;
 
@@ -25,11 +26,17 @@ class Comments extends Component
   }
 
 
+  public function updated($newComment)
+  {
+    $this->validateOnly($newComment, [
+      'newComment' => 'required',
+    ]);
+  }
+
   public function addComment()
   {
+    $this->validate(['newComment' => "required"]);
 
-
-    if ($this->newComment == "") return;
 
     $newComment = Comment::create(['body' => $this->newComment, 'user_id' => 1]);
     $this->comments->prepend($newComment);
