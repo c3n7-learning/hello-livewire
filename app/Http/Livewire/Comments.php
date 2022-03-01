@@ -29,13 +29,13 @@ class Comments extends Component
   public function updated($newComment)
   {
     $this->validateOnly($newComment, [
-      'newComment' => 'required',
+      'newComment' => 'required|max:255',
     ]);
   }
 
   public function addComment()
   {
-    $this->validate(['newComment' => "required"]);
+    $this->validate(['newComment' => "required|max:255"]);
 
 
     $newComment = Comment::create(['body' => $this->newComment, 'user_id' => 1]);
