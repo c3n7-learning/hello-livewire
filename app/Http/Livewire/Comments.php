@@ -26,9 +26,9 @@ class Comments extends Component
   }
 
   protected $rules =
-    [
-      'newComment' => 'required|max:255',
-    ];
+  [
+    'newComment' => 'required|max:255',
+  ];
 
 
   public function updated($newComment)
@@ -45,5 +45,15 @@ class Comments extends Component
     $this->comments->prepend($newComment);
 
     $this->newComment = "";
+  }
+
+  public function remove($commentId)
+  {
+    $comment = Comment::find($commentId);
+
+    $comment->delete();
+
+    $this->comments = $this->comments->except($commentId);
+    // dd($comment);
   }
 }
