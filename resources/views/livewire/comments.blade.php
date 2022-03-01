@@ -2,10 +2,6 @@
   <div class="flex justify-center">
     <div class="w-6/12">
       <h1 class="my-10 text-3xl">Comments</h1>
-      @error('newComment')
-        <span class="text-red-500 text-xs">{{ $message }}</span>
-      @enderror
-
       <div>
         @if (session()->has('message'))
           <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
@@ -14,6 +10,17 @@
         @endif
       </div>
 
+      <div>
+
+        @error('image')
+          <div class="text-red-500 text-xs">{{ $message }}</div>
+        @enderror
+        <input type="file" id="image" wire:model="image" />
+      </div>
+
+      @error('newComment')
+        <span class="text-red-500 text-xs">{{ $message }}</span>
+      @enderror
       <form class="my-4 flex" wire:submit.prevent="addComment">
         <input type="text" class="w-full rounded border shadow p-2 mr-2 my-2" placehodler="What's in your mind."
           wire:model.debounce.500ms="newComment">

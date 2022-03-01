@@ -5,15 +5,17 @@ namespace App\Http\Livewire;
 use App\Models\Comment;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class Comments extends Component
 {
-  use WithPagination;
+  use WithPagination, WithFileUploads;
 
   public $validate;
 
   public $newComment;
+  public $image;
 
   public function render()
   {
@@ -26,6 +28,7 @@ class Comments extends Component
   protected $rules =
   [
     'newComment' => 'required|max:255',
+    'image' => 'image|max:1024',
   ];
 
 
@@ -40,6 +43,7 @@ class Comments extends Component
 
 
     Comment::create(['body' => $this->newComment, 'user_id' => 1]);
+    $this->image->store('photos');
 
     $this->newComment = "";
 
