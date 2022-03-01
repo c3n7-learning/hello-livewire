@@ -5,25 +5,23 @@ namespace App\Http\Livewire;
 use App\Models\Comment;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Comments extends Component
 {
-  public $comments;
+  use WithPagination;
+
   public $validate;
 
   public $newComment;
 
   public function render()
   {
-    return view('livewire.comments');
+    return view('livewire.comments', [
+      'comments' => Comment::with('creator')->orderBy('created_at', 'desc')->paginate(2)
+    ]);
   }
 
-
-  public function mount()
-  {
-    // $this->comments = Comment::all();
-    $this->comments = Comment::with('creator')->orderBy('created_at', 'desc')->get();
-  }
 
   protected $rules =
   [
