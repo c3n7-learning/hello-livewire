@@ -15,6 +15,13 @@
         @error('image')
           <div class="text-red-500 text-xs">{{ $message }}</div>
         @enderror
+        @if ($image)
+          <div>
+            Photo Preview:
+            <img src="{{ $image->temporaryUrl() }}">
+          </div>
+        @endif
+        <div wire:loading wire:target="image">Uploading...</div>
         <input type="file" id="image" wire:model="image" />
       </div>
 
