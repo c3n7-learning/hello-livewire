@@ -19,13 +19,20 @@
 
 <body>
 
-  <div class="flex w-full justify-left text-white bg-black py-2" id="app">
-    <a href="/" class="shadow px-2 py-3 hover:underline">Home</a>
-    <a href="/login" class="shadow px-2 py-3 hover:underline">Login</a>
+  <div class="flex w-full justify-between text-white bg-black py-2" id="app">
+    <div class="py-3">
+      <a href="/" class="shadow px-2 py-3 hover:underline">Home</a>
+    </div>
+    <div class="py-3">
+      <a href="/login" class="px-2 hover:underline">Login</a>
+      <a href="/register" class="px-2 hover:underline">Register</a>
+    </div>
   </div>
 
-  <div class="my-10">
-    {{ $slot }}
+  <div class="flex justify-center">
+    <div class="w-10/12 my-10 flex">
+      {{ $slot }}
+    </div>
   </div>
 
 
