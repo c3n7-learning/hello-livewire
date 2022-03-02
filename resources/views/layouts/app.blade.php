@@ -19,6 +19,11 @@
 
 <body>
 
+  <div class="flex w-full justify-center text-blue-600 py-2">
+    <a href="/" class="shadow px-2 py-1">Home</a>
+    <a href="/login" class="shadow px-2 py-1">Login</a>
+  </div>
+
   {{ $slot }}
 
 
