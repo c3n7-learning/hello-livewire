@@ -19,12 +19,14 @@
 
 <body>
 
-  <div class="flex w-full justify-center text-blue-600 py-2" id="app">
-    <a href="/" class="shadow px-2 py-1">Home</a>
-    <a href="/login" class="shadow px-2 py-1">Login</a>
+  <div class="flex w-full justify-left text-white bg-black py-2" id="app">
+    <a href="/" class="shadow px-2 py-3 hover:underline">Home</a>
+    <a href="/login" class="shadow px-2 py-3 hover:underline">Login</a>
   </div>
 
-  {{ $slot }}
+  <div class="my-10">
+    {{ $slot }}
+  </div>
 
 
   <livewire:scripts />
