@@ -24,7 +24,8 @@ class Register extends Component
     ]);
 
     User::create($this->form);
-    return redirect(route('login'));
+
+    return redirect()->route('login');
   }
 
   public function render()
