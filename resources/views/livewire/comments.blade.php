@@ -18,11 +18,11 @@
         @if ($image)
           <div>
             Photo Preview:
-            <img src="{{ $image->temporaryUrl() }}">
+            <img src="{{ $image->temporaryUrl() }}" class="h-56">
           </div>
         @endif
         <div wire:loading wire:target="image">Uploading...</div>
-        <input type="file" id="image" wire:model="image" />
+        <input type="file" wire:model="image" id="iteration{{ $iteration }}" />
       </div>
 
       @error('newComment')

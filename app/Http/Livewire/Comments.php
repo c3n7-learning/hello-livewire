@@ -16,6 +16,7 @@ class Comments extends Component
 
   public $newComment;
   public $image;
+  public $iteration = 1;
 
   public function render()
   {
@@ -28,24 +29,34 @@ class Comments extends Component
   protected $rules =
   [
     'newComment' => 'required|max:255',
-    'image' => 'image|max:1024',
+    'image' => 'nullable|image|max:1024',
   ];
 
 
   public function updated($newComment)
   {
-    $this->validateOnly($newComment);
+    $this->validateOnly($newComment,  [
+      'newComment' => 'required|max:255',
+      'image' => 'nullable|sometimes|image|max:1024',
+    ]);
   }
 
   public function addComment()
   {
     $this->validate();
 
+    $path = null;
+    if ($this->image != null) {
+      $path = $this->image->store('photos');
+    }
 
-    Comment::create(['body' => $this->newComment, 'user_id' => 1]);
-    $this->image->store('photos');
+    Comment::create([
+      'body' => $this->newComment, 'user_id' => 1, 'image' => $path
+    ]);
 
     $this->newComment = "";
+    $this->image = null;
+    $this->iteration++;
 
     session()->flash('message', 'Comment added successfully');
   }

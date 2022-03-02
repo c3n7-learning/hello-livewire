@@ -11,6 +11,7 @@ class Comment extends Model
 
   public $fillable = [
     'body',
+    'image',
     'user_id',
   ];
 
