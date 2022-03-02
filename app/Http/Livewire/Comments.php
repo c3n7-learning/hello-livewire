@@ -15,6 +15,7 @@ class Comments extends Component
   public $validate;
 
   public $newComment;
+  public $ticketId = 1;
   public $image;
   public $iteration = 1;
 
@@ -51,7 +52,10 @@ class Comments extends Component
     }
 
     Comment::create([
-      'body' => $this->newComment, 'user_id' => 1, 'image' => $path
+      'body' => $this->newComment,
+      'user_id' => 1,
+      'image' => $path,
+      'support_ticket_id' => $this->ticketId
     ]);
 
     $this->newComment = "";

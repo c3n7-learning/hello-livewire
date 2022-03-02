@@ -13,6 +13,7 @@ class Comment extends Model
     'body',
     'image',
     'user_id',
+    'support_ticket_id',
   ];
 
   public function creator()
