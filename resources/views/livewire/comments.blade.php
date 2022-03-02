@@ -1,6 +1,6 @@
 <div>
-  <div class="flex justify-center">
-    <div class="w-6/12">
+  <div>
+    <div class="p-3">
       <h1 class="my-10 text-3xl">Comments</h1>
       <div>
         @if (session()->has('message'))
