@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Comment;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -22,7 +23,10 @@ class Comments extends Component
   public function render()
   {
     return view('livewire.comments', [
-      'comments' => Comment::with('creator')->orderBy('created_at', 'desc')->paginate(2)
+      'comments' => Comment::with('creator')
+        ->where('support_ticket_id', $this->ticketId)
+        ->orderBy('created_at', 'desc')
+        ->paginate(2)
     ]);
   }
 
@@ -33,6 +37,16 @@ class Comments extends Component
     'image' => 'nullable|image|max:1024',
   ];
 
+  protected $listeners = [
+    // 'ticketSelected' =>'ticketSelected'
+    'ticketSelected'
+  ];
+
+  public function ticketSelected($ticketId)
+  {
+    // Debugbar::info($ticketId);
+    $this->ticketId = $ticketId;
+  }
 
   public function updated($newComment)
   {

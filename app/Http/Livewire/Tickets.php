@@ -11,7 +11,8 @@ class Tickets extends Component
   {
     return view('livewire.tickets', [
       // ::with('creator')->
-      'tickets' => SupportTicket::orderBy('created_at', 'desc')->get()
+      // 'tickets' => SupportTicket::orderBy('created_at', 'desc')->get()
+      'tickets' => SupportTicket::all()
     ]);
   }
 }
