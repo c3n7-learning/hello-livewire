@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class Register extends Component
 {
-  public $name, $email, $password, $password2;
   public $form = [
     'name' => '',
     'email' => '',

@@ -23,10 +23,13 @@
     <div class="py-3">
       <a href="/" class="shadow px-2 py-3 hover:underline">Home</a>
     </div>
-    <div class="py-3">
-      <a href="/login" class="px-2 hover:underline">Login</a>
-      <a href="/register" class="px-2 hover:underline">Register</a>
-    </div>
+
+    @guest
+      <div class="py-3">
+        <a href="/login" class="px-2 hover:underline">Login</a>
+        <a href="/register" class="px-2 hover:underline">Register</a>
+      </div>
+    @endguest
   </div>
 
   <div class="flex justify-center">
