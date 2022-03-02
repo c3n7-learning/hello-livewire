@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\SupportTicketFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +14,6 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
     \App\Models\User::factory(10)->create();
-    SupportTicketFactory::factory(20)->create();
+    \App\Models\SupportTicket::factory(20)->create();
   }
 }

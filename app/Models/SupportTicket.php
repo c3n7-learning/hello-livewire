@@ -9,6 +9,10 @@ class SupportTicket extends Model
 {
   use HasFactory;
 
+  public $fillable = [
+    "question"
+  ];
+
   public function comments()
   {
     return $this->hasMany(Comment::class);
