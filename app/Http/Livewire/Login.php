@@ -21,7 +21,7 @@ class Login extends Component
     ]);
     // dd('here');
     if (Auth::attempt($this->form)) {
-      return redirect('/register', 303);
+      return redirect()->route('home', 303);
     }
 
     return back()->withErrors([
