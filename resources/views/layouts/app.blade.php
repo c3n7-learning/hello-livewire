@@ -19,7 +19,7 @@
 
 <body>
 
-  <div class="flex w-full justify-center text-blue-600 py-2">
+  <div class="flex w-full justify-center text-blue-600 py-2" id="app">
     <a href="/" class="shadow px-2 py-1">Home</a>
     <a href="/login" class="shadow px-2 py-1">Login</a>
   </div>
@@ -28,6 +28,14 @@
 
 
   <livewire:scripts />
+
+
+  <script type="module">
+    import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
+    data-turbolinks-eval="false" data-turbo-eval="false"></script>
 </body>
 
 </html>
