@@ -16,7 +16,7 @@ class Comments extends Component
   public $validate;
 
   public $newComment;
-  public $ticketId = 1;
+  public $ticketId;
   public $image;
   public $iteration = 1;
 

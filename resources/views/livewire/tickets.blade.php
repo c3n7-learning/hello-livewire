@@ -1,7 +1,7 @@
 <div class="p-3">
   <h1 class="my-10 text-3xl">Tickets</h1>
   @foreach ($tickets as $ticket)
-    <div class="rounded border shadow p-3 my-2">
+    <div class="rounded border shadow p-3 my-2 {{ $active == $ticket->id ? 'bg-blue-100' : '' }}">
       <div class="flex justify-between my-2">
 
         <p class="font-bold text-lg">#{{ $ticket->id }}</p>
